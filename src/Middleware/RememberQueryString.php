@@ -9,7 +9,7 @@ class RememberQueryString {
     public function handle(Request $request, Closure $next, string $key)
     {
         $request->session()->put(
-            'query_string.' . $key,
+            "query_string.{$key}",
             $request->all()
         );
 

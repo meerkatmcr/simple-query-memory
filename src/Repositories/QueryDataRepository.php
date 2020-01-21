@@ -8,16 +8,16 @@ class QueryDataRepository {
 
     public function forget(string $key)
     {
-        Session::forget('query_string.' . $key);
+        Session::forget("query_string.{$key}");
     }
 
     public function get(string $key, array $parameters = [])
     {
-        if (!Session::has('query_string' . $key)) {
+        if (!Session::has("query_string.{$key}")) {
             return null;
         }
 
-        $data = Session::get('query_string' . $key);
+        $data = Session::get("query_string.{$key}");
 
         if (count($parameters) == 0) {
             return $data;
