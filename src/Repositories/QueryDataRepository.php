@@ -2,6 +2,7 @@
 
 namespace MeerkatMcr\SimpleQueryMemory\Repositories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 
 class QueryDataRepository {
@@ -25,8 +26,8 @@ class QueryDataRepository {
             $required_data = [];
 
             foreach($parameters as $parameter) {
-                if (array_has($data, $parameter)) {
-                    $required_data[$parameter] = array_get($data, $parameter);
+                if (Arr::has($data, $parameter)) {
+                    $required_data[$parameter] = Arr::get($data, $parameter);
                 }
             }
             return $required_data;
